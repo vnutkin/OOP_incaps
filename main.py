@@ -2,9 +2,9 @@ class User():
     def __init__(self, id, name):
         self.id =  id
         self.name = name
-        self.level = 'user'
+        self.__level = 'user'
     def get_info(self):
-        print(f'User Id {self.id}, name {self.name}, level {self.level}')
+        print(f'User Id {self.id}, name {self.name}, level {self.__level}')
 class Admin(User):
     def __init__(self):
         self.users = []
@@ -13,11 +13,11 @@ class Admin(User):
     def _del_user(self, user):
         self.users.remove(user)
     def set_admin(self, user):
-        user.level = 'admin'
+        user.__level = 'admin'
     def get_info(self, id):
         for user in self.users:
             if user.id == id:
-                print(f'User Id {user.id}, name {user.name}, level {user.level}')
+                print(f'User Id {user.id}, name {user.name}, level {user.__level}')
                 return
         print(f'no user with Id {id}')
     def list_users(self):
@@ -42,5 +42,7 @@ ad._del_user(user2)
 user2.get_info()
 ad.get_info(2)
 ad.list_users()
+print(user1.name)
+#print(user1.__level)
 
 
